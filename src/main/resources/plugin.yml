@@ -1,0 +1,6 @@
+name: BestiumExample
+version: '1.0.0'
+main: cz.jeme.bestiumexample.BestiumExample
+api-version: '1.21'
+authors: [ Hužva ]
+description: Plugin that stops the server with a countdown
