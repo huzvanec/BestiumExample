@@ -1,7 +1,6 @@
 plugins {
     kotlin("jvm") version "2.2.0"
-    id("com.gradleup.shadow") version "8.3.8"
-    id("xyz.jpenilla.run-paper") version "2.3.1"
+    id("com.gradleup.shadow") version "9.0.0-rc2"
     id("io.papermc.paperweight.userdev") version "2.0.0-beta.18"
 }
 
@@ -15,9 +14,8 @@ repositories {
 }
 
 dependencies {
-    paperweight.paperDevBundle("1.21.4-R0.1-SNAPSHOT")
-    implementation(kotlin("stdlib-jdk8"))
-    compileOnly(files("./api-1.0.0.jar"))
+    paperweight.paperDevBundle("1.21.8-R0.1-SNAPSHOT")
+    compileOnly(files("./api-1.1.0.jar"))
 }
 
 val targetJavaVersion = 21
@@ -26,13 +24,6 @@ kotlin {
 }
 
 tasks {
-    runServer {
-        downloadPlugins {
-            modrinth("bettermodel", "1.5.1")
-        }
-        minecraftVersion("1.21.4")
-    }
-
     shadowJar {
         archiveClassifier = ""
 

@@ -2,12 +2,17 @@ name: BestiumExample
 version: '${version}'
 main: cz.jeme.bestiumexample.BestiumExample
 bootstrapper: cz.jeme.bestiumexample.BestiumExampleBootstrapper
-api-version: '1.21.4'
+api-version: '1.21.8'
 author: Hužva
 description: Example plugin showcasing features of Bestium
+
+# Depend on Bestium
 dependencies:
   bootstrap:
     Bestium:
       load: BEFORE
       required: true
+      join-classpath: true
+  server:
+    Bestium:
       join-classpath: true
