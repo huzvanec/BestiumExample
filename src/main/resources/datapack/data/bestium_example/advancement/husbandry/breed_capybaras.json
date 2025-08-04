@@ -1,0 +1,37 @@
+{
+  "parent": "minecraft:husbandry/breed_an_animal",
+  "criteria": {
+    "bestium_example:capybara": {
+      "conditions": {
+        "child": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "bestium_example:capybara"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:bred_animals"
+    }
+  },
+  "display": {
+    "description": {
+      "text": "Help two capybaras fall in love."
+    },
+    "frame": "task",
+    "icon": {
+      "count": 1,
+      "id": "minecraft:melon_slice"
+    },
+    "title": {
+      "text": "Water you doing?"
+    }
+  },
+  "requirements": [
+    [
+      "bestium_example:capybara"
+    ]
+  ]
+}

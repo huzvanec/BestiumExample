@@ -2,26 +2,10 @@
   "pack": {
     "description": [
       {
-        "text": "The main data pack powering the Steve addon",
+        "text": "The main data pack powering the Bestium Example plugin",
         "color": "dark_aqua"
       }
     ],
-    "pack_format": 61
-  },
-  "filter": {
-    "block": [
-      {
-        "namespace": "minecraft",
-        "path": "recipe/.*_planks.json"
-      },
-      {
-        "namespace": "minecraft",
-        "path": "recipe/stick.json"
-      },
-      {
-        "namespace": "minecraft",
-        "path": "advancement"
-      }
-    ]
+    "pack_format": 80
   }
 }
