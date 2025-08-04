@@ -8,7 +8,7 @@
             "condition": "minecraft:entity_properties",
             "entity": "this",
             "predicate": {
-              "type": "bestium_example:capybara"
+              "id": "bestium_example:capybara"
             }
           }
         ]
