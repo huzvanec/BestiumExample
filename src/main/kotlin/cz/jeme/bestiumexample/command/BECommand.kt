@@ -36,6 +36,7 @@ class BECommand(plugin: Plugin, commands: Commands) {
     }
 
     private val command = Commands.literal("bexample")
+        .requires { it.sender.hasPermission("bestium_example.command.bexample") }
         .then(
             Commands.literal("spawnben")
                 .executes(::spawnBen)

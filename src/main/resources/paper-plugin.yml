@@ -16,3 +16,7 @@ dependencies:
   server:
     Bestium:
       join-classpath: true
+      
+permissions: 
+  bestium_example.command.bexample:
+    default: op
