@@ -28,12 +28,6 @@ class Capybara(entityType: EntityType<out Capybara>, level: Level) : Animal(enti
                 .add(Attributes.MAX_HEALTH, 10.0)
                 .add(Attributes.MOVEMENT_SPEED, .25)
         }
-
-        /** Returns whether an item is edible for Capybaras. */
-        fun isCapybaraFood(stack: ItemStack): Boolean = when (stack.item) {
-            Items.SEAGRASS, Items.MELON_SLICE -> true
-            else -> false
-        }
     }
 
     override fun finalizeSpawn(
@@ -44,7 +38,7 @@ class Capybara(entityType: EntityType<out Capybara>, level: Level) : Animal(enti
     ): SpawnGroupData? {
         // This is an example of a rare "allowed" usage of Bukkit API in a custom entity class.
         // Other logic must  use NMS (`net.minecraft.*`).
-        // For more, see: https://bestium.jeme.cz/code/coding-entity/
+        // For more, see: https://docs.bestium.jeme.cz/code/coding-entity/
         Bukkit.broadcast(
             Component.text(
                 "Look! A Capybara spawned at $x / $y / $z!",
@@ -66,17 +60,20 @@ class Capybara(entityType: EntityType<out Capybara>, level: Level) : Animal(enti
         goalSelector.addGoal(0, FloatGoal(this))
         goalSelector.addGoal(1, PanicGoal(this, 1.25))
         goalSelector.addGoal(3, BreedGoal(this, 1.0))
-        goalSelector.addGoal(
-            4,
-            TemptGoal(this, 1.2, ::isCapybaraFood, false)
-        )
+        goalSelector.addGoal(4, TemptGoal(this, 1.2, ::isFood, false))
         goalSelector.addGoal(5, FollowParentGoal(this, 1.1))
         goalSelector.addGoal(6, WaterAvoidingRandomStrollGoal(this, 1.0))
-        goalSelector.addGoal(7, LookAtPlayerGoal(this, Player::class.java, 6.0f))
+        goalSelector.addGoal(7, LookAtPlayerGoal(this, Player::class.java, 6.0F))
         goalSelector.addGoal(8, RandomLookAroundGoal(this))
     }
 
-    override fun isFood(stack: ItemStack): Boolean = isCapybaraFood(stack)
+    /**
+     * Returns whether an item can be eaten by Capybaras.
+     */
+    override fun isFood(stack: ItemStack): Boolean = when (stack.item) {
+        Items.SEAGRASS, Items.MELON_SLICE -> true
+        else -> false
+    }
 
     /**
      * Handles the creation of a Capybara baby during breeding.
