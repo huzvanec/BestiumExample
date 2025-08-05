@@ -6,7 +6,6 @@ import org.bukkit.plugin.java.JavaPlugin
 
 internal class BestiumExample : JavaPlugin() {
     override fun onEnable() {
-
         // register BE command
         lifecycleManager.registerEventHandler(LifecycleEvents.COMMANDS) { event ->
             val commands = event.registrar()

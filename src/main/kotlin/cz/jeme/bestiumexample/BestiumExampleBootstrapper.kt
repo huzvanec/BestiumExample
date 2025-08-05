@@ -7,7 +7,6 @@ import cz.jeme.bestium.api.inject.biome.SpawnData
 import cz.jeme.bestium.api.inject.biome.SpawnRule
 import cz.jeme.bestium.api.inject.variant.EntityVariant
 import cz.jeme.bestium.api.inject.variant.VariantRule
-import cz.jeme.bestium.api.util.BiomeTemperature
 import cz.jeme.bestiumexample.entity.Capybara
 import io.papermc.paper.plugin.bootstrap.BootstrapContext
 import io.papermc.paper.plugin.bootstrap.PluginBootstrap
@@ -30,12 +29,14 @@ class BestiumExampleBootstrapper : PluginBootstrap {
                 ::CraftAnimals,
                 EntityType.PIG
             )
-                .setDisplayNames(
-                    mapOf(
-                        Locale.US to Component.text("Capybara"),
-                        Locale.of("cs", "CZ") to Component.text("Kapybara"),
-                    )
-                )
+                .setDisplayName(Locale.US, Component.text("Capybara"))
+                .setDisplayName(Locale.FRANCE, Component.text("Capybara"))
+                .setDisplayName(Locale.GERMANY, Component.text("Wasserschwein"))
+                .setDisplayName(Locale.ITALY, Component.text("Capibara"))
+                .setDisplayName(Locale.JAPAN, Component.text("カピバラ"))
+                .setDisplayName(Locale.KOREA, Component.text("카피바라"))
+                .setDisplayName(Locale.CHINA, Component.text("水豚"))
+                .setDisplayName(Locale.of("cs", "CZ"), Component.text("Kapybara"))
                 .setMobCategory(MobCategory.CREATURE)
                 .setDefaultAttributes(Capybara.createAttributes())
                 .addVariants(
@@ -52,8 +53,8 @@ class BestiumExampleBootstrapper : PluginBootstrap {
                 )
                 .setVariantRule(
                     VariantRule.firstMatch(
-                        VariantRule.ifTemperature(
-                            BiomeTemperature.COLD,
+                        VariantRule.ifBiome(
+                            BiomeFilter.tag(Key.key("minecraft:spawns_cold_variant_farm_animals")),
                             "blue"
                         ),
                         VariantRule.always("normal")
