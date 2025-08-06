@@ -27,7 +27,7 @@ Purely for demonstration purposes:
 /bexample spawnben
 ```
 
-spawns a Capybara named "Ben the capybara".
+spawns a very fast Capybara.
 
 ## Building
 

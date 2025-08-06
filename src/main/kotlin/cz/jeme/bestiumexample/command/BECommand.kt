@@ -8,6 +8,7 @@ import io.papermc.paper.command.brigadier.CommandSourceStack
 import io.papermc.paper.command.brigadier.Commands
 import net.kyori.adventure.text.Component
 import net.minecraft.world.entity.EntitySpawnReason
+import org.bukkit.attribute.Attribute
 import org.bukkit.craftbukkit.entity.CraftAnimals
 import org.bukkit.event.entity.CreatureSpawnEvent
 import org.bukkit.plugin.Plugin
@@ -16,21 +17,21 @@ class BECommand(plugin: Plugin, commands: Commands) {
     private fun spawnBen(ctx: CommandContext<CommandSourceStack>): Int {
         val spawnLocation = ctx.source.location
 
-        Bestium.getEntityManager().spawn(
+        val capybara = Bestium.getEntityManager().spawn(
             spawnLocation,
             Capybara::class.java,
             EntitySpawnReason.COMMAND,
             CreatureSpawnEvent.SpawnReason.COMMAND
-        ) { capybara ->
-            // obtain bukkit representation of capybara
-            // I can safely cast as CraftAnimals, because I specified
-            // ::CraftAnimals as the ConvertFunction when registering Capybara injection
-            val bukkit = capybara.bukkitEntity as CraftAnimals
+        )!!
+        // the following code is not ran in the consumer parameter of spawn(),
+        // because attributes are applied right before entity spawn
+        // and would be overwritten by default attributes
 
-            bukkit.customName(Component.text("Ben the capybara"))
-            // display custom name even when not aiming at the entity
-            bukkit.isCustomNameVisible = true
-        }
+        // obtain bukkit representation of capybara
+        // I can safely cast as CraftAnimals, because I specified
+        // ::CraftAnimals as the ConvertFunction when registering Capybara injection
+        val bukkit = capybara.bukkitEntity as CraftAnimals
+        bukkit.getAttribute(Attribute.MOVEMENT_SPEED)!!.baseValue = 0.4
 
         return Command.SINGLE_SUCCESS
     }
