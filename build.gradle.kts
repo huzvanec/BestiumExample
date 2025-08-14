@@ -1,5 +1,5 @@
 plugins {
-    kotlin("jvm") version "2.2.0"
+    kotlin("jvm") version "2.2.10"
     id("com.gradleup.shadow") version "9.0.1"
     id("io.papermc.paperweight.userdev") version "2.0.0-beta.18"
 }
