@@ -1,7 +1,7 @@
 plugins {
     kotlin("jvm") version "2.2.20"
     id("com.gradleup.shadow") version "9.2.2"
-    id("io.papermc.paperweight.userdev") version "2.0.0-beta.18"
+    id("io.papermc.paperweight.userdev") version "2.0.0-beta.19"
 }
 
 group = "cz.jeme"
