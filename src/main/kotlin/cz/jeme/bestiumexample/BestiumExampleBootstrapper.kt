@@ -8,6 +8,7 @@ import cz.jeme.bestium.api.inject.biome.SpawnRule
 import cz.jeme.bestium.api.inject.variant.EntityVariant
 import cz.jeme.bestium.api.inject.variant.VariantRule
 import cz.jeme.bestiumexample.entity.Capybara
+import cz.jeme.bestiumexample.entity.Hippogriff
 import io.papermc.paper.plugin.bootstrap.BootstrapContext
 import io.papermc.paper.plugin.bootstrap.PluginBootstrap
 import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents
@@ -16,6 +17,7 @@ import net.kyori.adventure.text.Component
 import net.minecraft.world.entity.EntityType
 import net.minecraft.world.entity.MobCategory
 import org.bukkit.craftbukkit.entity.CraftAnimals
+import org.bukkit.craftbukkit.entity.CraftTameableAnimal
 import java.util.*
 
 @Suppress("UnstableApiUsage", "unused")
@@ -69,6 +71,20 @@ class BestiumExampleBootstrapper : PluginBootstrap {
                 .setTypeCustomizer { builder ->
                     builder.fireImmune()
                 }
+                .build()
+        }
+
+        Bestium.getInjector().register {
+            EntityInjection.builder(
+                Key.key("bestium_example", "hippogriff"),
+                Hippogriff::class.java,
+                ::Hippogriff,
+                ::CraftTameableAnimal,
+                EntityType.PARROT
+            )
+                .setDefaultAttributes(Hippogriff.createAttributes())
+                .setDisplayName("Hippogriff")
+                .setMobCategory(MobCategory.CREATURE)
                 .build()
         }
 
