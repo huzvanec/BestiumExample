@@ -10,12 +10,14 @@ import cz.jeme.bestium.api.inject.variant.VariantRule
 import cz.jeme.bestiumexample.entity.Capybara
 import io.papermc.paper.plugin.bootstrap.BootstrapContext
 import io.papermc.paper.plugin.bootstrap.PluginBootstrap
+import io.papermc.paper.plugin.bootstrap.PluginProviderContext
 import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents
 import net.kyori.adventure.key.Key
 import net.kyori.adventure.text.Component
 import net.minecraft.world.entity.EntityType
 import net.minecraft.world.entity.MobCategory
 import org.bukkit.craftbukkit.entity.CraftAnimals
+import org.bukkit.plugin.java.JavaPlugin
 import java.util.*
 
 @Suppress("UnstableApiUsage", "unused")
@@ -83,4 +85,6 @@ class BestiumExampleBootstrapper : PluginBootstrap {
             )
         }
     }
+
+    override fun createPlugin(context: PluginProviderContext): JavaPlugin = BestiumExample
 }

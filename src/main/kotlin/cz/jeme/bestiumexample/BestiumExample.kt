@@ -4,13 +4,15 @@ import cz.jeme.bestiumexample.command.BECommand
 import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents
 import org.bukkit.plugin.java.JavaPlugin
 
-@Suppress("unused")
-internal class BestiumExample : JavaPlugin() {
+internal object BestiumExample : JavaPlugin() {
     override fun onEnable() {
         // register BE command
         lifecycleManager.registerEventHandler(LifecycleEvents.COMMANDS) { event ->
             val commands = event.registrar()
             BECommand(this, commands)
         }
+
+        saveDefaultConfig()
+        Config.reload()
     }
 }

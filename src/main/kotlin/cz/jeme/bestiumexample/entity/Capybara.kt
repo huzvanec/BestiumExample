@@ -1,5 +1,6 @@
 package cz.jeme.bestiumexample.entity
 
+import cz.jeme.bestiumexample.Config
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.event.ClickEvent
 import net.kyori.adventure.text.format.NamedTextColor
@@ -36,19 +37,21 @@ class Capybara(entityType: EntityType<out Capybara>, level: Level) : Animal(enti
         spawnReason: EntitySpawnReason,
         spawnGroupData: SpawnGroupData?
     ): SpawnGroupData? {
-        // This is an example of a rare "allowed" usage of Bukkit API in a custom entity class.
-        // Other logic must  use NMS (`net.minecraft.*`).
-        // For more, see: https://docs.bestium.jeme.cz/code/coding-entity/
-        Bukkit.broadcast(
-            Component.text(
-                "Look! A Capybara spawned at $x / $y / $z!",
-                NamedTextColor.GREEN
-            ).clickEvent(
-                ClickEvent.suggestCommand(
-                    "/tp @s $x $y $z"
+        if (Config.notifyOnCapybaraSpawn) {
+            // This is an example of a rare "allowed" usage of Bukkit API in a custom entity class.
+            // Other logic must  use NMS (`net.minecraft.*`).
+            // For more, see: https://docs.bestium.jeme.cz/code/coding-entity/
+            Bukkit.broadcast(
+                Component.text(
+                    "Look! A Capybara spawned at $x / $y / $z!",
+                    NamedTextColor.GREEN
+                ).clickEvent(
+                    ClickEvent.suggestCommand(
+                        "/tp @s $x $y $z"
+                    )
                 )
             )
-        )
+        }
         return super.finalizeSpawn(level, difficulty, spawnReason, spawnGroupData)
     }
 

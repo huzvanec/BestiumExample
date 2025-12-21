@@ -1,0 +1,2 @@
+# Sends a debug message to the whole server whenever a capybara spawns (with clickable coordinates)
+notify-on-capybara-spawn: false
