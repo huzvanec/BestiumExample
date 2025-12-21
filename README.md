@@ -29,7 +29,7 @@ Purely for demonstration purposes:
 
 spawns a very fast Capybara.
 
-### `Water you doing?` advancement
+### `Water you doing?` advancement (via a [built-in datapack](./src/main/resources/datapack))
 
 Granted when a player breeds two capybaras
 
