@@ -29,15 +29,19 @@ class BestiumExampleBootstrapper : PluginBootstrap {
                 ::CraftAnimals,
                 EntityType.PIG
             )
-                .setDisplayName(Locale.US, Component.text("Capybara"))
-                .setDisplayName(Locale.FRANCE, Component.text("Capybara"))
-                .setDisplayName(Locale.GERMANY, Component.text("Wasserschwein"))
-                .setDisplayName(Locale.ITALY, Component.text("Capibara"))
-                .setDisplayName(Locale.JAPAN, Component.text("カピバラ"))
-                .setDisplayName(Locale.KOREA, Component.text("카피바라"))
-                .setDisplayName(Locale.CHINA, Component.text("水豚"))
-                .setDisplayName(Locale.of("cs", "CZ"), Component.text("Kapybara"))
                 .setMobCategory(MobCategory.CREATURE)
+                .setDisplayNames(
+                    mapOf(
+                        Locale.US to Component.text("Capybara"),
+                        Locale.FRANCE to Component.text("Capybara"),
+                        Locale.GERMANY to Component.text("Wasserschwein"),
+                        Locale.ITALY to Component.text("Capibara"),
+                        Locale.JAPAN to Component.text("カピバラ"),
+                        Locale.KOREA to Component.text("카피바라"),
+                        Locale.CHINA to Component.text("水豚"),
+                        Locale.of("cs", "CZ") to Component.text("Kapybara")
+                    )
+                )
                 .setDefaultAttributes(Capybara.createAttributes())
                 .addVariants(
                     EntityVariant.fromModelResource(

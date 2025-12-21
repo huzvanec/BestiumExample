@@ -6,7 +6,6 @@ import cz.jeme.bestium.api.Bestium
 import cz.jeme.bestiumexample.entity.Capybara
 import io.papermc.paper.command.brigadier.CommandSourceStack
 import io.papermc.paper.command.brigadier.Commands
-import net.kyori.adventure.text.Component
 import net.minecraft.world.entity.EntitySpawnReason
 import org.bukkit.attribute.Attribute
 import org.bukkit.craftbukkit.entity.CraftAnimals

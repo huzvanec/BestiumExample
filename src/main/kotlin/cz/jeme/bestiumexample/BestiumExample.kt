@@ -4,6 +4,7 @@ import cz.jeme.bestiumexample.command.BECommand
 import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents
 import org.bukkit.plugin.java.JavaPlugin
 
+@Suppress("unused")
 internal class BestiumExample : JavaPlugin() {
     override fun onEnable() {
         // register BE command

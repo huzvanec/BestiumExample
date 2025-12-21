@@ -29,6 +29,10 @@ Purely for demonstration purposes:
 
 spawns a very fast Capybara.
 
+### `Water you doing?` advancement
+
+Granted when a player breeds two capybaras
+
 ## Building
 
 Requirements:
