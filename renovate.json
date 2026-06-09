@@ -1,20 +1,21 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended"
+    "config:recommended",
+    "schedule:automergeEarlyMondays"
   ],
-  "dependencyDashboard": false,
+  "dependencyDashboard": true,
   "automergeType": "branch",
+  "minimumReleaseAge": "7 days",
   "packageRules": [
     {
+      "groupName": "weekly minors",
       "matchUpdateTypes": [
         "minor",
-        "patch",
-        "pin",
-        "digest"
+        "patch"
       ],
-      "automerge": true,
-      "ignoreTests": true
+      "matchCurrentVersion": "!/^0/",
+      "automerge": true
     }
   ]
 }
