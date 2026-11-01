@@ -15,7 +15,7 @@ repositories {
 
 dependencies {
     paperweight.paperDevBundle("26.1.2.build.+")
-    compileOnly("cz.jeme:bestium:3.6.0")
+    compileOnly("cz.jeme:bestium:3.7.0")
 }
 
 val targetJavaVersion = 25
